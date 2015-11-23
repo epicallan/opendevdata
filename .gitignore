@@ -18,10 +18,12 @@ opendevdata-lock
 /log/*.log
 /tmp
 /config/mongoid.yml
+/config/client_secret.p12
 /public/assets/
 /public/uploads/
 /public/system/*
 /config/environments/production.rb
+/config/application.yml
 
 # Ignore application configuration
-/config/application.yml
+

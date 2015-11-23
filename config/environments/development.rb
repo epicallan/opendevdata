@@ -29,17 +29,17 @@ Opendataportal::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  #config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
+
   config.action_mailer.smtp_settings = {
     :authentication => :plain,
     :address => "smtp.mailgun.org",
     :port => 587,
-    :domain => "https://api.mailgun.net/v3/sandboxecc68e19013f41e99582d8f6e9312bcb.mailgun.org",
-    :user_name => "postmaster@sandboxecc68e19013f41e99582d8f6e9312bcb.mailgun.org",
-    :password => "e85e03b2220d48857c5c02f09d97c522"
+    :domain => ENV('MG_DOMAIN'),
+    :user_name => ENV('MG_USERNAME'),
+    :password => ENV('MG_PASSWORD')
   }
 end
