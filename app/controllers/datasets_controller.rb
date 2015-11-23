@@ -45,6 +45,7 @@ class DatasetsController < ApplicationController
       @feedback.email = params[:email]
       @feedback.organisation = params[:organisation]
       @feedback.remarks =  params[:remarks]
+      @feedback.gender = params[:gender]
       @feedback.dataset = @dataset
       @feedback.save
      end

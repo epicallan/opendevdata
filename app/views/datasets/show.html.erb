@@ -86,11 +86,8 @@
             </p>
             <% if signed_in? %>
                 <% if has_access? @dataset.open_workspace, current_user, @dataset %>
-                    <%= link_to 'Edit dataset', edit_dataset_path(@dataset) %>
-
-                    <%= link_to @dataset, method: :delete, data: {confirm: "Are you sure you want to delete this dataset?"}, class: 'btn btn-danger' do %>
-                        <span class='fa fa-trash'></span> Delete
-                    <% end %>
+                    <p><%= link_to 'Edit dataset', edit_dataset_path(@dataset) %></p>
+                   <p id="delete"><%= link_to "Delete dataset", delete_dataset_path(@dataset.id) %></p>
 
                 <% end %>
             <% end %>
@@ -183,6 +180,10 @@
       <fieldset>
           <input type="email" id="feedback-email" placeholder="email">
           <input type="text" id="feedback-organisation" placeholder="organisation">
+          <select id="gender">
+             <option value="male">Male</option>
+             <option value="female">Female</option>
+          </select>
           <label>Reason</label>
           <textarea id="feedback-reason" rows=3></textarea>
           <button type="submit" class="submit-feedback" id="submit" class="small button">Submit Feedback</button>
@@ -211,28 +212,32 @@
       var email = $('input#feedback-email').val();
       var organisation = $('input#feedback-organisation').val();
       var remarks = $('textarea#feedback-reason').val();
+      var gender = $('#gender').val();
 
       var obj = {
         remarks: remarks,
         organisation: organisation,
         format: format,
         email:email,
-        id: id
-      }
+        id: id,
+        gender: gender
+      };
+      //close feedback model
+      $('#feedbackModal').foundation('reveal', 'close');
+      //post data
       $.post(url, obj)
         .done(function(data){
           if (data){
-            $('#feedbackModal').foundation('reveal', 'close');
-            console.log(data.url)
-            //window.open(data.url);
+            //download data in separate window
             window.location.href = data.url;
+            //console
 
           }
         }).fail(function(error){
-            console.log(error)
+            console.log(error);
         });
         event.preventDefault();
       });
 
-  })
+  });
 </script>

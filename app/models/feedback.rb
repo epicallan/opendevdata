@@ -5,7 +5,7 @@ class Feedback
   field :remarks, type: String
   field :email, type: String
   field :organisation, type: String
-  # field :gender, type: String
+  field :gender, type: String
   belongs_to :open_workspace
   belongs_to :dataset
 end

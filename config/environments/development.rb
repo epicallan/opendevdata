@@ -33,13 +33,13 @@ Opendataportal::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-
-  config.action_mailer.smtp_settings = {
-    :authentication => :plain,
-    :address => "smtp.mailgun.org",
-    :port => 587,
-    :domain => ENV('MG_DOMAIN'),
-    :user_name => ENV('MG_USERNAME'),
-    :password => ENV('MG_PASSWORD')
-  }
+  #please use the config/appalication.rb file for mailer settings
+  # config.action_mailer.smtp_settings = {
+  #   :authentication => :plain,
+  #   :address => "smtp.mailgun.org",
+  #   :port => 587,
+  #   :domain => ENV('MG_DOMAIN'),
+  #   :user_name => ENV('MG_USERNAME'),
+  #   :password => ENV('MG_PASSWORD')
+  # }
 end
